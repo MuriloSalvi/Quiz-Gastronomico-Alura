@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function PudimComBatata() {
+export default function QuizPage() {
   return (
     <div>
-      Página de quiz
+      Testando 1,2,3
     </div>
   );
 }

@@ -7,6 +7,8 @@ const Widget = styled.div`
   background-color: ${({ theme }) => theme.colors.mainBg};
   border-radius: 4px;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgb(0,0,0, 0.5);
 
   h1, h2, h3 {
     font-size: 16px;
@@ -27,6 +29,7 @@ Widget.Header = styled.header`
   align-items: center;
   padding: 18px 32px;
   background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 10px 10px 0px 0px;
   
   * {
     margin: 0;
@@ -45,6 +48,7 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
+  border-radius: 10px
 `;
 
 export default Widget;

@@ -9,6 +9,8 @@ import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import Label from '../src/components/Label'
+import StartButton from '../src/components/StartButton'
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -30,12 +32,12 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   const router = useRouter();
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState('')
 
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
-        <title>AluraQuiz - Modelo Base</title>
+        <title>AluraQuiz - Gastronomia</title>
       </Head>
       <QuizContainer>
         <QuizLogo />
@@ -44,25 +46,20 @@ export default function Home() {
             <h1>Quiz Gastronomico</h1>
           </Widget.Header>
           <Widget.Content>
-            <form onSubmit={function (infosDoEvento) {
-              infosDoEvento.preventDefault();
+            <form onSubmit={function(event){
+              event.preventDefault();
+            
               router.push(`/quiz?name=${name}`);
-              console.log('Fazendo uma submissão por meio do react');
-            }}
-            >
-              <input
-                onChange={function (infosDoEvento) {
-                  console.log(infosDoEvento.target.value);
-                  // State
-                  // name = infosDoEvento.target.value;
-                  setName(infosDoEvento.target.value);
-                }}
-                placeholder="Diz ai seu nome"
-              />
-              <button type="submit" disabled={name.length === 0}>
-                Jogar 
-                {" " + name}
-              </button>
+              console.log('Funcionou')
+
+              //router manda direto pra proxima pagina
+            }}>
+            <Label placeholder='Seu nome' onChange={function(event){
+              setName(event.target.value)
+            }}></Label>
+            <StartButton type='submit' type='submit' disabled={name.length == 0}>
+              jogar {name}
+            </StartButton>
             </form>
           </Widget.Content>
         </Widget>
@@ -76,7 +73,7 @@ export default function Home() {
         </Widget>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/omariosouto" />
+      <GitHubCorner projectUrl="https://github.com/MuriloSalvi" />
     </QuizBackground>
   );
 }
