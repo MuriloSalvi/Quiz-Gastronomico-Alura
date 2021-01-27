@@ -1,3 +1,4 @@
+
 import styled from 'styled-components'
 
 const StartButton = styled.button`
@@ -11,5 +12,6 @@ border-radius: 10px;
 outline: none;
 border: 2px solid ${({theme})=>theme.colors.secondary}
 `
+
 
 export default StartButton;
