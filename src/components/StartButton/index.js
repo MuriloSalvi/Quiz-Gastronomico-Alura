@@ -3,8 +3,7 @@ import styled from 'styled-components'
 
 const StartButton = styled.button`
 background-color: ${({ theme }) => theme.colors.item};
-margin-top: 3
-px;
+margin-top: 13px;
 width: 100%;
 color: ${({theme})=> theme.colors.contrastText};
 padding: 8px;
