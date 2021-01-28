@@ -1,5 +1,4 @@
-
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Label = styled.input`
 background-color: ${({ theme }) => theme.colors.contrastText};
@@ -11,6 +10,6 @@ padding: 8px;
 color: ${({ theme }) => theme.colors.secondary};
 text-align: center;
 outline: none;
-`
+`;
 
 export default Label;
