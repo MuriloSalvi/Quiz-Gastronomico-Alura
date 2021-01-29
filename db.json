@@ -4,7 +4,7 @@
   "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "image": "https://belezaesaude.com/i/f/o/saude/conteudo/manjericao.jpg",
       "title": "Como fazer um seletor por id via CSS?",
       "description": "Essa é pra aquecer",
       "answer": 2,
@@ -24,8 +24,67 @@
          "background: linear-gradient(#e66465, #9198e5);",
          "background: gradient(#e66465, #9198e5);"
       ]
+    },
+    {
+      "image": "https://belezaesaude.com/i/f/o/saude/conteudo/manjericao.jpg",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [
+        ".elemento",
+        "*elemento",
+        "#elemento",
+        "%elemento"
+      ]
+    },
+    {
+      "image": "https://belezaesaude.com/i/f/o/saude/conteudo/manjericao.jpg",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [
+        ".elemento",
+        "*elemento",
+        "#elemento",
+        "%elemento"
+      ]
+    },
+    {
+      "image": "https://belezaesaude.com/i/f/o/saude/conteudo/manjericao.jpg",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [
+        ".elemento",
+        "*elemento",
+        "#elemento",
+        "%elemento"
+      ]
+    },{
+      "image": "https://belezaesaude.com/i/f/o/saude/conteudo/manjericao.jpg",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [
+        ".elemento",
+        "*elemento",
+        "#elemento",
+        "%elemento"
+      ]
+    },{
+      "image": "https://belezaesaude.com/i/f/o/saude/conteudo/manjericao.jpg",
+      "title": "Como fazer um seletor por id via CSS?",
+      "description": "Essa é pra aquecer",
+      "answer": 2,
+      "alternatives": [
+        ".elemento",
+        "*elemento",
+        "#elemento",
+        "%elemento"
+      ]
     }
   ],
+  
   "external": [
     ""
   ],
