@@ -11,14 +11,14 @@ border-radius: 10px;
 outline: none;
 border: 2px solid ${({ theme }) => theme.colors.secondary};
 cursor: pointer;
-box-shadow: 0px 5px 5px rgb(0,0,0, 0.5);
+box-shadow: 0px 2px 5px rgb(0,0,0, 0.5);
 position: relative;
 
 &:hover{
     opacity: 0.5
 }
 &:active{
-    top: 3px;
+    top: 2px;
     box-shadow: none;
 }
 `;

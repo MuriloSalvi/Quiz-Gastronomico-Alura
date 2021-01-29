@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -12,14 +11,6 @@ import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Label from '../src/components/Label';
 import StartButton from '../src/components/StartButton';
-
-// const BackgroundImage = styled.div`
-//   flex: 1;
-//   background-size: cover;
-//   background-position: center;
-// `;
-
-
 
 export default function Home() {
   const router = useRouter();
@@ -47,15 +38,17 @@ export default function Home() {
             }}
             >
               <Label
-              name = 'nomeDoUsuario'
-                onChange={ (event) =>{
+                name="nomeDoUsuario"
+                onChange={(event) => {
                   setName(event.target.value);
                 }}
                 placeholder="Seu nome"
                 value={name}
-                 />
+              />
               <StartButton type="submit" type="submit" disabled={name.length == 0}>
-                jogar {name}
+                jogar
+                {' '}
+                {name}
               </StartButton>
             </form>
           </Widget.Content>
