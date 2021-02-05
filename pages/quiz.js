@@ -1,19 +1,62 @@
+/* eslint-disable space-before-blocks */
+/* eslint-disable react/jsx-indent */
 import React from 'react';
-import styled from 'styled-components';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-
 import db from '../db.json';
+import StartButton from '../src/components/StartButton';
 import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
-import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
-import Label from '../src/components/Label';
-import StartButton from '../src/components/StartButton';
 import QuizContainer from '../src/components/QuizContainer';
 
-function LoadingWidget(){
+function QuestionWidget({
+  question, totalQuestions, questionIndex,
+}){
+  return (
+    <Widget>
+    <Widget.Header>
+      <h3>
+        {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
+      </h3>
+    </Widget.Header>
+    <img
+      alt="Descrição"
+      style={{
+        width: '100%',
+        height: '150px',
+        objectFit: 'cover',
+      }}
+      src={question.image}
+    />
+    <Widget.Content>
+      <h2>{question.title}</h2>
+      <p>{question.description}</p>
+      <form>
+      {question.alternatives.map((alternative, alternativeIndex) => {
+        const alternativeID = `alternative__${alternativeIndex}`;
+        return (
+          <Widget.Topic htmlFor={alternativeID}>
+            {alternative}
+            <input
+              id={alternativeID}
+              type="radio"
+            />
+          </Widget.Topic>
+        );
+      })}
+
+ {/* <pre>{JSON.stringify(question, null, 4)}</pre> */}
+      <StartButton type="submit">
+        Confirmar
+      </StartButton>
+      </form>
+    </Widget.Content>
+
+    </Widget>
+  );
+}
+
+function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>
@@ -27,41 +70,21 @@ function LoadingWidget(){
 }
 
 export default function QuizPage() {
-  console.log(db.questions)
+  const totalQuestions = db.questions.length;
+  const questionIndex = 0;
+  const question = db.questions[questionIndex];
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <GitHubCorner projectUrl="https://github.com/MuriloSalvi" />
       <QuizContainer>
-        <QuizLogo></QuizLogo>
-        <Widget>
-          <Widget.Header>
-            <h3>
-              Pergunta 1 de
-              {' '}
-              {`${db.questions.length}`}
-            </h3>
-          </Widget.Header>
-          <img
-            alt="Descrição"
-            style={{
-              width: '100%',
-              height: '150px',
-              objectFit: 'cover',
-            }}
-            src={db.questions.image}
+        <QuizLogo />
+          <QuestionWidget
+            question={question}
+            totalQuestions={totalQuestions}
+            questionIndex={questionIndex}
           />
-          <Widget.Content>
-            <h2>Tutulo</h2>
-            <p>Desc</p>
-
-            <StartButton type='submit'>
-            Confirmar
-        </StartButton>
-          </Widget.Content>
-
-
-        </Widget>
-        <LoadingWidget></LoadingWidget>
+        <LoadingWidget />
       </QuizContainer>
     </QuizBackground>
   );
