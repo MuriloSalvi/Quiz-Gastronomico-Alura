@@ -47,7 +47,7 @@ margin-bottom: 8px;
 border-radius: 10px;
 border: 1px solid #5C3024;
 display: block;
-text-align:center;
+text-align:start;
 &:hover,
 &:focus{
   opacity: .5;
