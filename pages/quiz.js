@@ -12,7 +12,10 @@ import LoadingWidget from "../src/components/LoadingWidget"
 
 
 function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
+  const [selectedAlternative , setSelectedAlternative] = React.useState(undefined);
+  const[isQuestionSubmited, setIsQuestionSubmited] =React.useState(false)
   const questionID = `questionID__ ${questionIndex}`;
+  const isCorrect = selectedAlternative === question.answer;
   return (
     <Widget>
       <Widget.Header>
@@ -32,8 +35,10 @@ function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
         <p>{question.description}</p>
         <form onSubmit ={(infosDoEvento)=>{
           infosDoEvento.preventDefault()
+          setIsQuestionSubmited(true)
           onSubmit()
         }} >
+          
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeID = `alternative__${alternativeIndex}`;
             return (
@@ -42,6 +47,10 @@ function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
                 <input
                   styçe={"display:none"}
                   id={alternativeID}
+                  name = {questionID}
+
+                  onChange = {()=> setSelectedAlternative(alternativeIndex)}
+
                   type="radio"
                   name="option"
                 />
@@ -51,6 +60,8 @@ function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
 
           {/* <pre>{JSON.stringify(question, null, 4)}</pre> */}
           <StartButton type="submit">Confirmar</StartButton>
+          {isQuestionSubmited && isCorrect && <p>Você acertou</p>}
+          {isQuestionSubmited && !isCorrect && <p>Você errou</p>}
         </form >
       </Widget.Content>
     </Widget>
@@ -74,7 +85,7 @@ export default function QuizPage() {
   React.useEffect(()=>{
     setTimeout(()=>{
       setScreenState(ScreenStates.quiz);
-    }, 1 * 500);
+    }, 1 * 2000);
   },[]);
   
   //nasce === didMount
@@ -82,6 +93,7 @@ export default function QuizPage() {
   //morre === willUnmount
 
   function handelSubmitQuiz(){
+    
     const nextQuestion = questionIndex + 1;
      if(nextQuestion < totalQuestions){
       setCurrentQuestion(questionIndex + 1)
