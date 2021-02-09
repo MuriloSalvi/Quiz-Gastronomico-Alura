@@ -13,9 +13,10 @@ import LoadingWidget from "../src/components/LoadingWidget"
 
 function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
   const [selectedAlternative , setSelectedAlternative] = React.useState(undefined);
-  const[isQuestionSubmited, setIsQuestionSubmited] =React.useState(false)
+  const[isQuestionSubmited, setIsQuestionSubmited] = React.useState(false)
   const questionID = `questionID__ ${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
+  const [Restult, setResult] = React.useState(0)
   return (
     <Widget>
       <Widget.Header>
@@ -36,6 +37,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
         <form onSubmit ={(infosDoEvento)=>{
           infosDoEvento.preventDefault()
           setIsQuestionSubmited(true)
+          setResult(Restult + 1)
           onSubmit()
         }} >
           
@@ -60,7 +62,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex,onSubmit }) {
 
           {/* <pre>{JSON.stringify(question, null, 4)}</pre> */}
           <StartButton type="submit">Confirmar</StartButton>
-          {isQuestionSubmited && isCorrect && <p>Você acertou</p>}
+          {isQuestionSubmited && isCorrect && <p>Você acertou {Restult} de {totalQuestions} !</p>}
           {isQuestionSubmited && !isCorrect && <p>Você errou</p>}
         </form >
       </Widget.Content>
