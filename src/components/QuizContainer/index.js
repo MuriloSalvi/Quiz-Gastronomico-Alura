@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ export const QuizContainer = styled.div`
   }
 `;
 
-QuizContainer.PropTypes={
-    optionalElement: PropTypes.element,
+QuizContainer.PropTypes = {
+  optionalElement: propTypes.element,
 };
 export default QuizContainer;

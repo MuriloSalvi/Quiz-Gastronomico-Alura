@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Widget from "../Widget";
+import styled from 'styled-components';
+import Widget from '../Widget';
 
 const Animation = styled.div`
   background-image: url("https://i.pinimg.com/originals/17/86/96/178696fb4e2f78505fbf56fd228119fa.png");
@@ -21,8 +21,7 @@ const Animation = styled.div`
       transform: rotate(360deg);
     }
   }
-`;
-
+  `;
 const Reticencias = styled.div`
   font-weight: bolder;
   font-size: 20px;
@@ -54,7 +53,9 @@ function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>
-        <Reticencias>Carregando...</Reticencias> <Animation></Animation>
+        <Reticencias>Carregando...</Reticencias>
+        {' '}
+        <Animation />
       </Widget.Header>
     </Widget>
   );
