@@ -11,7 +11,8 @@ import QuizBackground from '../src/components/QuizBackground';
 import GitHubCorner from '../src/components/GitHubCorner';
 import QuizContainer from '../src/components/QuizContainer';
 import LoadingWidget from '../src/components/LoadingWidget';
-import ResultWidget from '../src/components/ResultWidget'
+
+
 
 function QuestionWidget({
   question,
@@ -123,6 +124,23 @@ export default function QuizPage() {
     }
   }
 
+  function ResultWidget({results}){
+    return(
+    <Widget>
+      <Widget.Header>
+        <p>Você acerotu X</p>
+         <ul>
+           {results.map((result)=> {
+             <li>
+               {result === true ? 'acertou' : 'errou'}
+             </li>
+           })}
+           </ul>
+      </Widget.Header>
+    </Widget>
+    )
+  }
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <GitHubCorner projectUrl="https://github.com/MuriloSalvi" />
@@ -138,7 +156,7 @@ export default function QuizPage() {
         )}
 
         {ScreenState === ScreenStates.loading && <LoadingWidget />}
-        {ScreenState === ScreenStates.result && <ResultWidget/>}
+        {ScreenState === ScreenStates.result && <ResultWidget results={results}/>}
 
       </QuizContainer>
     </QuizBackground>
