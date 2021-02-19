@@ -166,10 +166,10 @@ export default function QuizPage() {
         </h2>
          <ul>
           {results.map((result, index) => (
-            <li key={`result`}>
+            {/* <li key={`result`}>
               {`Pergunta 0${index + 1}: `}
               {result === true ? 'Acertou' : 'errou'}
-            </li>
+            </li> */}
           ))}
          </ul>
       </Widget.Content>
