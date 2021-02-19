@@ -11,6 +11,7 @@ import db from '../db.json';
 import StartButton from '../src/components/StartButton';
 import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
+import AlternativeForm from '../src/components/AlternativeForm';
 import QuizBackground from '../src/components/QuizBackground';
 import GitHubCorner from '../src/components/GitHubCorner';
 import QuizContainer from '../src/components/QuizContainer';
@@ -45,7 +46,7 @@ function QuestionWidget({
       <Widget.Content>
         <h2>{question.title}</h2>
         <p>{question.description}</p>
-        <form onSubmit={(infosDoEvento) => {
+        <AlternativeForm onSubmit={(infosDoEvento) => {
           infosDoEvento.preventDefault();
           setIsQuestionSubmited(true);
           setTimeout(() => {
@@ -59,11 +60,15 @@ function QuestionWidget({
 
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeID = `alternative__${alternativeIndex}`;
+            const alternativeStatus = isCorrect ? 'SUCESS' : 'ERROR';
+            const isSelected = selectedAlternative === alternativeIndex;
             return (
               <Widget.Topic
                 htmlFor={alternativeID}
                 key={alternativeID}
                 as="label"
+                data-selected={isSelected}
+                data-status={isQuestionSubmited && alternativeStatus}
               >
                 {alternative}
                 <input
@@ -79,7 +84,7 @@ function QuestionWidget({
 
           {/* <pre>{JSON.stringify(question, null, 4)}</pre> */}
           <StartButton type="submit">Confirmar</StartButton>
-        </form>
+        </AlternativeForm>
         {isQuestionSubmited
             && isCorrect
             && (
@@ -150,7 +155,6 @@ export default function QuizPage() {
       <Widget.Content>
         <h2>
           {'Você acertou '}
-  {/* ==== Numero de perguntas que voce acertou ==== */}
           {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
             if (isAcerto) {
@@ -158,18 +162,16 @@ export default function QuizPage() {
             }
             return somatoriaAtual;
           }, 0)}
-          {` de ${totalQuestions}`}
+          {` de ${totalQuestions} Perguntas!`}
         </h2>
          <ul>
           {results.map((result, index) => (
-            <li key={`result__${result}`}>
+            <li key={`result`}>
               {`Pergunta 0${index + 1}: `}
-              {result === true
-                ? 'Acertou'
-                : 'Errou'}
+              {result === true ? 'Acertou' : 'errou'}
             </li>
           ))}
-        </ul>
+         </ul>
       </Widget.Content>
 
       <StartButton
